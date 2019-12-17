@@ -71,6 +71,16 @@ function Navbar(props) {
                 Necesitamos
               </NavLink>
             )}
+            {context.user.typeUser === "Beneficiado" && (
+              <NavLink exact to="/createvisit" activeClassName="navbar-active">
+                Visítame
+              </NavLink>
+            )}
+            {context.user.typeUser === "Asilo" && (
+              <NavLink exact to="/createvisit" activeClassName="navbar-active">
+                Visítanos
+              </NavLink>
+            )}
             {context.loggedUser && (
               <span
                 onClick={() =>

@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react'
 import AUTH_SERVICE from './services/AuthService'
 import COMMENT_SERVICE from './services/CommentService'
+import VISIT_SERVICE from './services/VisitService'
 import Swal from 'sweetalert2'
 
 export const MyContext = createContext()
@@ -19,10 +20,16 @@ class MyProvider extends Component {
       password: ''
     },
     user: {},
+
     commentForm: {
       comment: ''
     },
     commentData: {},
+
+    visitForm: {
+      description: ''
+    },
+    visitData: {}
   }
 
   componentDidMount() {
@@ -46,7 +53,6 @@ class MyProvider extends Component {
     })
     return data
   }
-
 
   handleInput = (e, obj) => {
     const a = this.state[obj]
@@ -96,6 +102,15 @@ class MyProvider extends Component {
     }
   }
 
+  handleVisit = async e => {
+    e.preventDefault()
+    await VISIT_SERVICE.createVisit(this.state.visitForm)
+    Swal.fire('Visita creada')
+    if(this.state.visitForm.description !== 0){
+      this.state.visitForm.description = ''
+    }
+  }
+
 
   render() {
     return (
@@ -109,10 +124,16 @@ class MyProvider extends Component {
           handleLogin: this.handleLogin,
           handleLogout: this.handleLogout,
           user: this.state.user,
+
           handleComment: this.handleComment,
           commentForm: this.state.commentForm,
           commentData: this.state.commentData,
-          viewComments: this.viewComments
+          viewComments: this.viewComments, 
+
+          handleVisit: this.handleVisit,
+          visitForm: this.state.visitForm,
+
+          
         }}
       >
         {this.props.children}

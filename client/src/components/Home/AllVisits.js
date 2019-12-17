@@ -9,8 +9,7 @@ export default class AllVisits extends React.Component {
     
         <MyContext.Consumer>
         {context => (
-          
-          <div className="comments">
+          <div className="visits">
             <h1>Visita</h1>
           </div>
         )}

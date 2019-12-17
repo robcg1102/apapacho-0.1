@@ -8,6 +8,7 @@ import ProfileCreate from './components/Profile/ProfileCreate'
 import Home from './components/Home/Home'
 import AllComments from './components/Home/AllComments'
 import AllVisits from './components/Home/AllVisits'
+import CreateVisit from './components/Profile/CreateVisit'
 
 function Routes() {
   return (
@@ -21,6 +22,7 @@ function Routes() {
         <Route exact path="/create" component={ProfileCreate} />
         <Route exact path="/comments" component={AllComments} />
         <Route exact path="/visits" component={AllVisits} />
+        <Route exact path="/createvisit" component={CreateVisit} />
       </Switch>
     </BrowserRouter>
   )
