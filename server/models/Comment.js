@@ -12,7 +12,7 @@ const commentSchema = new Schema(
     },
     userID: {
       type: Schema.Types.ObjectId,
-      ref: "Beneficiado",
+      ref: "User",
     },
   },
   {

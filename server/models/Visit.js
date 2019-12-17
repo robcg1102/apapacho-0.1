@@ -10,6 +10,10 @@ const visitSchema = new Schema(
       type: String,
       required: true,
     },
+    userID: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

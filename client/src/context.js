@@ -22,12 +22,15 @@ class MyProvider extends Component {
     user: {},
 
     commentForm: {
-      comment: ''
+      comment: '',
+      userID: ''
     },
     commentData: {},
 
     visitForm: {
-      description: ''
+      description: '',
+      date: '',
+      userID: ''
     },
     visitData: {}
   }
@@ -38,7 +41,12 @@ class MyProvider extends Component {
     if (document.cookie) {
       AUTH_SERVICE.getUser()
         .then(({ data }) => {
-          this.setState({ loggedUser: true, user: data.user, commentData: data.comment })
+          this.setState({ 
+            loggedUser: true, user: data.user,
+             commentData: data.comment,
+             commentForm: {userID: data.user._id},
+             visitForm: {userID: data.user._id}
+            })
           Swal.fire(`Bienvenido de nuevo ${data.user.name}`)
           
         })
@@ -108,6 +116,7 @@ class MyProvider extends Component {
     Swal.fire('Visita creada')
     if(this.state.visitForm.description !== 0){
       this.state.visitForm.description = ''
+      this.state.visitForm.date = ''
     }
   }
 

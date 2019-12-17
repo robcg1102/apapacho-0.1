@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Icon, Button, DatePicker } from 'antd'
+import { Form, Input, Icon, Button } from 'antd'
 import { MyContext } from '../../context'
 
 export default function CreateVisit(props) {
@@ -21,12 +21,13 @@ export default function CreateVisit(props) {
               type="text"
               value={context.visitForm.description}
               onChange={e => context.handleInput(e, 'visitForm')}
+              required
             />
           </Form.Item>
 
           <div>
-            <label>Fecha</label>
-            <input name="date" type="date" min="2019-12-14" value={context.visitForm.date} onChange={e => context.handleInput(e, 'visitForm')} placeholder=""/>
+            <label>Selecciona la fecha en la que requieres la visita</label> <br></br>
+            <input name="date" type="date" min="2019-12-19" value={context.visitForm.date} onChange={e => context.handleInput(e, 'visitForm')} required placeholder=""/>
           </div>
 
 
