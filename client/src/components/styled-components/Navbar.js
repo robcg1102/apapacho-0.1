@@ -12,7 +12,7 @@ const StyledNavbar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0px;
+  padding: 0;
   box-sizing: border-box;
   & a {
     padding: 5px;
@@ -41,7 +41,10 @@ function Navbar(props) {
               </div>
             </NavLink>
             <NavLink exact to="/comments" activeClassName="navbar-active">
-              Requerimos
+              Necesitan
+            </NavLink>
+            <NavLink exact to="/visits" activeClassName="navbar-active">
+              Visitas
             </NavLink>
             {!context.loggedUser && (
             <NavLink exact to="/signup" activeClassName="navbar-active">

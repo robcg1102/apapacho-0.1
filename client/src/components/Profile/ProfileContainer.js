@@ -22,7 +22,6 @@ export default function ProfileContainer(props) {
       <MyContext.Consumer>
 
         {context => (
-          
           <div className="profile">
             <h1>Perfil</h1>
             <img src={context.user.photoURL} width="100px" alt="photoUser"/> <br></br>

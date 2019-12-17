@@ -7,6 +7,7 @@ import ProfileContainer from './components/Profile/ProfileContainer'
 import ProfileCreate from './components/Profile/ProfileCreate'
 import Home from './components/Home/Home'
 import AllComments from './components/Home/AllComments'
+import AllVisits from './components/Home/AllVisits'
 
 function Routes() {
   return (
@@ -19,6 +20,7 @@ function Routes() {
         <Route exact path="/profile" component={ProfileContainer} />
         <Route exact path="/create" component={ProfileCreate} />
         <Route exact path="/comments" component={AllComments} />
+        <Route exact path="/visits" component={AllVisits} />
       </Switch>
     </BrowserRouter>
   )
