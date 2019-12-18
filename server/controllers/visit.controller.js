@@ -16,6 +16,6 @@ exports.createVisit = async (req, res, next) => {
 }
 
 exports.getVisits= async (req, res, next) => {
-  const visits = await Visit.find()
+  const visits = await Visit.find().populate('userID')
   res.status(200).json({ visits })
 }

@@ -27,12 +27,13 @@ export default class AllComments extends React.Component {
             {context.commentData.map((info, i)=>{
               return (
                 <Card
-                    style={{ width: 300, margin: 15 }}
+                    style={{ width: 300, margin: 15, borderRadius: 30, border: "double 2px black"}}
                     cover={
                       <img
                         alt="example"
                         src={info.photoComment}
-                      key={i}/>
+                      key={i}
+                      style={{ borderRadius: 30}}/>
                     }
                    
                     key={i}>

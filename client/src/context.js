@@ -37,15 +37,17 @@ class MyProvider extends Component {
 
   componentDidMount() {
     this.showComments().then(()=>{
-      console.log(this.state.commentData)
     })
+
+    this.showVisits().then(()=>{
+    })
+
     if (document.cookie) {
       
       AUTH_SERVICE.getUser()
         .then(({ data }) => {
           this.setState({ 
             loggedUser: true, user: data.user,
-             commentData: data.comment,
              commentForm: {userID: data.user._id},
              visitForm: {userID: data.user._id}
             })
@@ -63,6 +65,12 @@ class MyProvider extends Component {
     this.setState({...this.state, commentData})
   }
 
+  showVisits = async () => {
+    const {data: {visits}} = await VISIT_SERVICE.getVisits()
+    const visitData = visits
+    this.setState({...this.state, visitData})
+  }
+
   handleInput = (e, obj) => {
     const a = this.state[obj]
     const key = e.target.name
@@ -72,12 +80,18 @@ class MyProvider extends Component {
 
   handleSignup = async e => {
     e.preventDefault()
-    const { data } = await AUTH_SERVICE.signup(this.state.formSignup)
-    Swal.fire(`Bienvenido ${data.user.name}`, 'Usuario creado')
-    this.state.formSignup.name = ''
-    this.state.formSignup.email = ''
-    this.state.formSignup.password = ''
-    this.state.formSignup.typeUser = ''
+    await AUTH_SERVICE.signup(this.state.formSignup)
+    .then(({data})=>{
+      Swal.fire(`Bienvenido ${data.user.name}`, 'Usuario creado')
+      this.state.formSignup.name = ''
+      this.state.formSignup.email = ''
+      this.state.formSignup.password = ''
+      this.state.formSignup.typeUser = ''
+    })
+    .catch(err =>{
+      Swal.fire('Problema al crear tu cuenta, verifica que todos los campos estén llenos.')
+    })
+    
   }
 
   handleLogin = (e, cb) => {
@@ -109,9 +123,7 @@ class MyProvider extends Component {
     if(this.state.commentForm.comment !== 0){
       this.state.commentForm.comment = ''
     }
-    this.state.commentData = []
     this.showComments().then(()=>{
-      console.log(this.state.commentData)
     })
 
   }
@@ -124,6 +136,8 @@ class MyProvider extends Component {
       this.state.visitForm.description = ''
       this.state.visitForm.date = ''
     }
+    this.showVisits().then(()=>{
+    })
   }
 
 
@@ -146,6 +160,7 @@ class MyProvider extends Component {
 
           handleVisit: this.handleVisit,
           visitForm: this.state.visitForm,
+          visitData: this.state.visitData
 
           
         }}
