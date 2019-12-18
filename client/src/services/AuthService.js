@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3000'
+const baseURL = 'https://powerful-spire-47108.herokuapp.com'
 
 const service = axios.create({
   baseURL,
