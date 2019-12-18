@@ -7,12 +7,12 @@ import { withRouter } from 'react-router-dom'
 const StyledNavbar = styled.nav`
   background-color: #9999ff;
   font-weight: bolder;
-  width: 100vw;
+  width: 100%;
   height: 9vh;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0;
+  padding: 0 10px 0 0;
   box-sizing: border-box;
   & a {
     padding: 5px;

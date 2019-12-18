@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const StyledProfile = styled.div`
   .profile{
-    width: 600px;
+    width: 100%;
     display: flex;
     justify-content: center;
     padding: 50px;
@@ -12,7 +12,7 @@ const StyledProfile = styled.div`
     font-weight: bolder;
     margin: 0; 
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 0 0 15px 15px;
   }
 
 `

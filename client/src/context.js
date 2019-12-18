@@ -25,20 +25,22 @@ class MyProvider extends Component {
       comment: '',
       userID: ''
     },
-    commentData: {},
+    commentData: [],
 
     visitForm: {
       description: '',
       date: '',
       userID: ''
     },
-    visitData: {}
+    visitData: []
   }
 
   componentDidMount() {
-    this.setState({commentData: this.viewComments()})
-    //console.log(this.state.commentData)
+    this.showComments().then(()=>{
+      console.log(this.state.commentData)
+    })
     if (document.cookie) {
+      
       AUTH_SERVICE.getUser()
         .then(({ data }) => {
           this.setState({ 
@@ -52,14 +54,13 @@ class MyProvider extends Component {
         })
         .catch(err => console.log(err))
     }
+    
   }
 
-  viewComments = async () => {
-    const data = await COMMENT_SERVICE.getComments()
-    data.data.comments.forEach(e=>{
-      console.log(e.comment)
-    })
-    return data
+  showComments = async () => {
+    const {data: {comments}} = await COMMENT_SERVICE.getComments()
+    const commentData = comments
+    this.setState({...this.state, commentData})
   }
 
   handleInput = (e, obj) => {
@@ -108,6 +109,11 @@ class MyProvider extends Component {
     if(this.state.commentForm.comment !== 0){
       this.state.commentForm.comment = ''
     }
+    this.state.commentData = []
+    this.showComments().then(()=>{
+      console.log(this.state.commentData)
+    })
+
   }
 
   handleVisit = async e => {
@@ -137,7 +143,6 @@ class MyProvider extends Component {
           handleComment: this.handleComment,
           commentForm: this.state.commentForm,
           commentData: this.state.commentData,
-          viewComments: this.viewComments, 
 
           handleVisit: this.handleVisit,
           visitForm: this.state.visitForm,

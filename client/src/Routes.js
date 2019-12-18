@@ -9,6 +9,8 @@ import Home from './components/Home/Home'
 import AllComments from './components/Home/AllComments'
 import AllVisits from './components/Home/AllVisits'
 import CreateVisit from './components/Profile/CreateVisit'
+import Footer from './components/styled-components/Footer'
+
 
 function Routes() {
   return (
@@ -24,6 +26,7 @@ function Routes() {
         <Route exact path="/visits" component={AllVisits} />
         <Route exact path="/createvisit" component={CreateVisit} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }
