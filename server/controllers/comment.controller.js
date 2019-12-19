@@ -4,7 +4,6 @@ exports.createComment = async (req, res, next) => {
   const {comment} = req.body;
   const {_id} = req.user
 
-
   const commentUser = await Comment.create(
     { comment,
       userID: _id

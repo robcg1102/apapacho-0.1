@@ -4,7 +4,6 @@ exports.createVisit = async (req, res, next) => {
   const {description, date} = req.body;
   const {_id} = req.user
 
-
   const visitUser = await Visit.create(
     { description,
       date,
