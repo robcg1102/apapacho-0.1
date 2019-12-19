@@ -11,7 +11,6 @@ import AllVisits from './components/Home/AllVisits'
 import CreateVisit from './components/Profile/CreateVisit'
 import Footer from './components/styled-components/Footer'
 
-
 function Routes() {
   return (
     <BrowserRouter>

@@ -23,7 +23,7 @@ router.post('/login', passport.authenticate('local'), login)
 router.get('/profile', getUser)
 router.get('/logout', logout)
 
-router.post('/create', createComment)
+router.post('/create',createComment)
 router.get('/comments', getComments)
 
 router.post('/createvisit', createVisit)

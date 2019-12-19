@@ -1,7 +1,25 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Form, Input, Icon, Button } from 'antd'
 import { MyContext } from '../../context'
 
+const StyledLog = styled.div`
+font-weight: bolder;
+  display: flex;
+  justify-content: space-around;
+  .login{ 
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 15px;
+    margin: 15px;
+    height: 400px;
+  }
+  
+`
 export default class LoginContainer extends React.Component {
   componentDidMount() {
     if (this.context.loggedUser) {
@@ -11,9 +29,11 @@ export default class LoginContainer extends React.Component {
 
   render() {
     return (
+      <StyledLog>
       <MyContext.Consumer>
         {context => (
-          <Form
+          <>
+          <Form className="login"
             onSubmit={e => {
               context.handleLogin(e, () => {
                 this.props.history.push('/profile')
@@ -21,6 +41,7 @@ export default class LoginContainer extends React.Component {
             }}
           >
             <Form.Item>
+              <div>Ingresa tu correo: </div>
               <Input
                 name="email"
                 prefix={
@@ -34,6 +55,7 @@ export default class LoginContainer extends React.Component {
             </Form.Item>
 
             <Form.Item>
+            <div>Ingresa tu contraseña: </div>
               <Input
                 name="password"
                 type="password"
@@ -52,8 +74,11 @@ export default class LoginContainer extends React.Component {
               </Button>
             </Form.Item>
           </Form>
+          <img src="https://cdn2.iconfinder.com/data/icons/miscellaneous-46-line/128/enrollment_nomination_recruitment_registration_agreement_-512.png" alt="login"></img>
+          </>
         )}
       </MyContext.Consumer>
+      </StyledLog>
     )
   }
 }

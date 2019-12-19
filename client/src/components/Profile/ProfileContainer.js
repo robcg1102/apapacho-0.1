@@ -10,11 +10,10 @@ const StyledProfile = styled.div`
     padding: 50px;
     background-color: rgba(0, 0, 0, 0.3);
     font-weight: bolder;
-    margin: 0; 
+    margin: 0 0 300px 0; 
     padding: 15px;
     border-radius: 0 0 15px 15px;
   }
-
 `
 export default function ProfileContainer(props) {
     return (

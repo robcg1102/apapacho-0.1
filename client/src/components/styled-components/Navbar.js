@@ -40,12 +40,16 @@ function Navbar(props) {
                 <img src="./hands.png" width="30px" alt="logo"/>
               </div>
             </NavLink>
+            {context.loggedUser && (
             <NavLink exact to="/comments" activeClassName="navbar-active">
               Necesitan
             </NavLink>
+            )}
+            {context.loggedUser && (
             <NavLink exact to="/visits" activeClassName="navbar-active">
               Visitas
             </NavLink>
+            )}
             {!context.loggedUser && (
             <NavLink exact to="/signup" activeClassName="navbar-active">
               Regístrate

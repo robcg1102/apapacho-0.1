@@ -6,6 +6,13 @@ import styled from 'styled-components'
 const { Meta } = Card;
 
 const StyledVisits = styled.nav`
+text-align: center;
+  .title{
+    font-size: 30px;
+    background-color: rgba(0, 51, 77, 0.4);
+    border-radius: 0 30px;
+    padding: 30px;
+  }
   .visits{
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +27,9 @@ export default class AllVisits extends React.Component {
       <MyContext.Consumer>
       {context => (
       <StyledVisits>
-        <h1>Visítanos</h1>
+        <div className="title">
+            <h2>Visita a nuestros beneficiados</h2>
+        </div>
         <div className="visits">
           
           {context.visitData.map((visit, i)=>{
@@ -36,12 +45,14 @@ export default class AllVisits extends React.Component {
                   }
                  
                   key={i}>
+                    <div><strong>¿Cuándo?</strong></div>
                   <Meta
                     avatar={<Avatar src="hands.png" key={i}/>}
-                    title="Card title"
+                    title={visit.date}
                     description={visit.description}
                     key={i}/>
-                    
+                  <div><strong>¿Quién requiere la visita?</strong>{visit.userID.name}</div>
+                  <div><strong>Contáctalo:</strong> {visit.userID.email}</div>
               </Card>
             )
           })}
